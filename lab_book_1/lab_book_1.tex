@@ -44,6 +44,8 @@
 
 \documentclass[idxtotoc,hyperref,openany]{labbook} % 'openany' here removes the gap page between days, erase it to restore this gap; 'oneside' can also be added to remove the shift that odd pages have to the right for easier reading
 
+\RequirePackage[numbers,sort&compress]{natbib}
+\usepackage{biblatex}
 \usepackage[ 
   backref=page,
   pdfpagelabels=true,
@@ -914,6 +916,11 @@ e^{-\tau L_C}:\begin{cases}
 \end{equation}
 
 %----------------------------------------
+\labday{Lunes, 10 Marzo 2020}
+\experiment{La era de Julia}
+Mudé los integradores a Julia, en este lenguaje los pude generalizar facilmente y se me es mucho más fácil agregar osciladores.
+
+%----------------------------------------
 
 \experiment{example3}
 
@@ -1017,7 +1024,7 @@ Compound 2 & 20g & 10g\\
 \huge \textbf{Formulae} \\ \\
 
 \normalsize \textbf{Formula 1 - Pythagorean theorem}\\ \\
-$a^2 + b^2 = c^2$\\ \\
+$a^2 + b^2 = c^2$ \cite{diaconisDynamicalBiasCoin2007}\\ \\
 
 %-----------------------------------------
 
@@ -1026,5 +1033,9 @@ $a^2 + b^2 = c^2$\\ \\
 %Formula
 
 %----------------------------------------------------------------------------------------
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{unsrt}
+\bibliography{bib.bib}
 
 \end{document}
