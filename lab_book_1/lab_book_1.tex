@@ -919,6 +919,99 @@ e^{-\tau L_C}:\begin{cases}
 \labday{Lunes, 10 Marzo 2020}
 \experiment{La era de Julia}
 Mudé los integradores a Julia, en este lenguaje los pude generalizar facilmente y se me es mucho más fácil agregar osciladores.
+\experiment{Lo que he hecho en Julia}
+With Julia I have generalized the integrators using the OrdinaryDiffEq.jl package, this package has in its documentation symplectic integrators of different orders including the ones I was using before. This package is very suitable for what I am doing because I can easily include more modes into the bath without having to rewrite whole blocks of code.
+\experiment{Ensemble evolution and mutual information using BoxMuller}
+For only one oscillator. 
+In order to track the evolution of ensembles of trajectories I used the Box-Muller transform \cite{golderBoxMullerMethodGenerating1976} to generate gaussian distributions in the phase space of the oscillator and the system. Using this I solved the differential equations and evolved the ensembles on different initial positions for the oscillator phase space with the parameters:
+\begin{eqnarray}
+a=0.25\\
+b=0.01\\
+time=100.\\
+dts=0.001*2.\pi /w[2] #w[2]_reffers_to_frequency_of_oscillator \\
+m[1]=1.#Particle_mass \\
+m[2]=0.1#Oscilator_mass \\
+g[2]=0.05#Oscillator_coupling_constant \\
+w[2]=0.7071#Oscillator_frequency \\
+\end{eqnarray}
+Todos estos ensayos se pueden hacer en el notebook "informacion". En ese mismo notebook hay unas subrutinas que calculan la entropia
+All of these test can be reproduced again on the notebook "informacion". On the same notebook there are some subroutines that calculate the mutual information every 10 dts of the ensamble and plots it in order to obtain the dynamical evolution of the mutual information in the ensemble. This is done using the Julia package "ChaosTools.jl" which contains a function that calculates the Information of an ensemble of points efficiently.
+
+\experiment{Attractors of initial side for the particle}
+Now that I evolved the ensembles of trajectories I plotted the attractors for different initial conditions for the oscillator by making a grid on the phase space of the oscillator and the particle on the unstable equilibrium point. If the particle falls to the right well I gave the color red (1 in number) to the plot and if it falls on the left well I gave the color white (0 in number). I used two types of integrators for the same conditions of the system mentioned above (VerletLeapfrog and CalvoSanz4), the attractors where the same for both integrators. I varied the coupling constat $g$ to check for changes in the attractors, this is showed in the figures below:
+
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{attractor001.png}
+\end{center}
+\caption{Attractor for g=0.0001}
+\label{Attractorg0-0001}
+\end{figure}
+
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{attractor008.png}
+\end{center}
+\caption{Attractor for g=0.04}
+\label{Attractorg0-04}
+\end{figure}
+
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{attractor009.png}
+\end{center}
+\caption{Attractor for g=0.05}
+\label{Attractorg0-05}
+\end{figure}
+
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{attractor011.png}
+\end{center}
+\caption{Attractor for g=0.07}
+\label{Attractorg0-07}
+\end{figure}
+
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{attractor013.png}
+\end{center}
+\caption{Attractor for g=0.2}
+\label{Attractorg0-2}
+\end{figure}
+
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{attractor016.png}
+\end{center}
+\caption{Attractor for g=0.5}
+\label{Attractorg0-5}
+\end{figure}
+
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{attractor020.png}
+\end{center}
+\caption{Attractor for g=3.0}
+\label{Attractorg3}
+\end{figure}
+
+It can be seen some weird structures of spikes for $g=0.05$ and greater as seen in fig \ref{Attractorg0-05} and above. I made a little zoom of this structure for the case of $g=0.05$ and the result is show below:
+
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{zonararag0-05CalvoSanz.png}
+\end{center}
+\caption{Weird attractor zone for g=0.05}
+\label{WeirdAttractorg0-05}
+\end{figure}
+
+This structure seems to have some physics into into it, but I will not come back until later.
+\\
+\\
+I will evolve the ensemble on one of these spikes for the case of g=0.07 and check the result.
+
+
 
 %----------------------------------------
 
