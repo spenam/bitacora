@@ -1018,6 +1018,78 @@ I will evolve the ensemble on one of these spikes for the case of g=0.07 and che
 \label{WeirdAttractorg0-05}
 \end{figure}
 
+\labday{Jueves, 13 Marzo 2020}
+
+\experiment{Changed the potential constants to $a=0.2$ and $b=0.01$}
+This is because with these conditions the barrier value ($\Delta$) is $\Delta\approx 1$, with these conditions I plotted again the attractors, this result is showed below:
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{ab_fullg0-07Leapfrog.png}
+\end{center}
+\caption{Weird attractor zone for g=0.07 with new $a$ and $b$ constants}
+\label{WeirdAttractorg0-05New_ab}
+\end{figure}
+In order to evaluate the effects of the change of the parameters in the system I evolved the system for a $time=20$ and the new frequency of the new $a$ and $b$ that is $\omega_{resonance}=0.6324555320336759$ , also using the initial conditions $x_0=0$, $p_0=0$, $X_01=17$ and $P_01=1$ with the coupling parameter $g_1=0.07$ and the mass of the oscillator $m=0.1$.
+
+For the following experiments I evolved $4$ initial conditions that are: $X_01=\pm 17$ and $P_01=\pm 1$. This for three different frequencies given by: $\omega=\omega_{resonance}$, $\omega=\omega_{resonance}\cdot 2$ and $\omega=\omega_{resonance}/2$. The results are shown below:
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{condini_freq_mitad_doble.png}
+\end{center}
+\caption{Four trajectories on each cuadrant evolved for different frequencies}
+\label{Trajectories-frequencies}
+\end{figure}
+
+\experiment{Little test with two oscillators}
+I made a little test with two oscillators integrated using the CalvoSanz4 algorithm for a $time=500$ and $dts=0.0001*2^*\pi / \omega_{resonance}$. The parameters are given by $M_1,M_2=0.1$, $\omega_1=\omega_{resonance}*2$, $\omega_2=\omega_{resonance}$, $g_1=0.07$ and $g_2=0.09$. With initial conditions given by $x_0=0$, $p_0=0$, $X_01=5.35$, $P_01=0.27$, $X_02=-5.35$ and $P_02=0.27$, the result is shown below:
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{dos_osci.png}
+\end{center}
+\caption{Two oscillators varying their parameters}
+\label{Two_osci_first}
+\end{figure}
+
+In this attempt I see a tendency to go to one side.
+
+\experiment{Little test with three oscillators}
+I made a little test with three oscillators integrated using the CalvoSanz4 algorithm for a $time=8000$ and $dts=0.001*2^*\pi / \omega_{resonance}$. The parameters are given by $M_1,M_2,M_3=0.1$, $\omega_1=\omega_{resonance}$, $\omega_2=\omega_{resonance}/2$, $\omega_3=\omega_{resonance}*2$, $g_1=0.03$, $g_2=0.05$ and $g_2=0.07$. With initial conditions given by $x_0=0$, $p_0=0$, $X_01=5.35$, $P_01=0.27$, $X_02=0$, $P_02=-0.27$, $X_03=0$ and $P_03=0$, the result is shown below:
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{tres_osci_mejorintento.png}
+\end{center}
+\caption{Three oscillators varying their parameters}
+\label{Three_osci_first}
+\end{figure}
+
+In this attempt I see a tendency to go to one side again.
+
+\experiment{Well minima changes due to coupling with the oscillator}
+If I study the effect of just the potential and how it changes the equilibrium points I can view the potential part of the Hamiltonian as a many variables function:
+\begin{equation}
+f(x,\vec{X})=\frac{-ax^2}{2}+\frac{bx^4}{4}+\sum_i \Big( \frac{1}{2}m\omega_i^2X_i^2+xg_iX_i\Big)
+\end{equation}
+If I find the minima of this function I get:
+\begin{equation}
+f_x=-ax+bx^3+\sum_i g_iX_i=0 \rightarrow x(bx^2-a)+\sum_i g_iX_i=0 
+
+\end{equation}
+\begin{equation}
+f_{X_i}=m\omega_i^2 X_i +xg_i \rightarrow X_i=\frac{-xg_i}{m\omega_i^2}
+\end{equation}
+If we substitute $X_i$ into  $f_x$ then we obtain:
+\begin{equation}
+x(bx^2-a)-\frac{g^2x}{m\omega^2}=0\rightarrow x\Big(bx^2-a-\frac{g^2}{m\omega^2}\Big)=0
+\end{equation}
+which lets us find the new minima of the potential well:
+\begin{equation}
+x=0
+\end{equation}
+and 
+\begin{equation}
+x=\pm \sqrt{\frac{a+\frac{g^2}{m\omega^2}}{b}}
+\end{equation}
+
 
 
 %----------------------------------------
