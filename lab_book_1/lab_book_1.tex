@@ -1067,7 +1067,8 @@ In this attempt I see a tendency to go to one side again.
 \experiment{Well minima changes due to coupling with the oscillator}
 If I study the effect of just the potential and how it changes the equilibrium points I can view the potential part of the Hamiltonian as a many variables function:
 \begin{equation}
-f(x,\vec{X})=\frac{-ax^2}{2}+\frac{bx^4}{4}+\sum_i \Big( \frac{1}{2}m\omega_i^2X_i^2+xg_iX_i\Big)
+f(x,\vec{X})=\frac{-ax^2}{2}+\frac{bx^4}{4}+\sum_i \Big( \frac{1}{2}M_i\omega_i^2X_i^2+xg_iX_i\Big)
+\label{potential_equation}
 \end{equation}
 If I find the minima of this function I get:
 \begin{equation}
@@ -1075,11 +1076,12 @@ f_x=-ax+bx^3+\sum_i g_iX_i=0 \rightarrow x(bx^2-a)+\sum_i g_iX_i=0
 
 \end{equation}
 \begin{equation}
-f_{X_i}=m\omega_i^2 X_i +xg_i \rightarrow X_i=\frac{-xg_i}{m\omega_i^2}
+f_{X_i}=M_i\omega_i^2 X_i +xg_i \rightarrow X_i=\frac{-xg_i}{M_i\omega_i^2}
+\label{Value_of_Xi}
 \end{equation}
 If we substitute $X_i$ into  $f_x$ then we obtain:
 \begin{equation}
-x(bx^2-a)-\frac{g^2x}{m\omega^2}=0\rightarrow x\Big(bx^2-a-\frac{g^2}{m\omega^2}\Big)=0
+x(bx^2-a)-\sum_i \frac{g_i^2x}{M_i\omega_i^2}=0\rightarrow x\Big(bx^2-a-\sum_i \frac{g_i^2}{M_i\omega^2}\Big)=0
 \end{equation}
 which lets us find the new minima of the potential well:
 \begin{equation}
@@ -1087,9 +1089,55 @@ x=0
 \end{equation}
 and 
 \begin{equation}
-x=\pm \sqrt{\frac{a+\frac{g^2}{m\omega^2}}{b}}
+x=\pm \sqrt{\frac{a+\sum_i \frac{g_i^2}{M_i\omega_i^2}}{b}}
+\label{Minima_well_value}
 \end{equation}
+This equation shows that the minima is shifted in position due to the coupling, frequency and mass of each oscillator; also it can be seen that the shifting is always positive, this means that the minima position only increases in distance.
 
+We can also find the value of the energy on those minima positions using equations \ref{potential_equation},\ref{Value_of_Xi} and \ref{Minima_well_value}:
+\begin{eqnarray}
+H_{min}=\frac{-a}{2} \Bigg(\frac{a+\sum_i \frac{g_i^2}{M_i\omega_i^2}}{b} \Bigg) +\frac{b}{4} \Bigg(\frac{a+\sum_i \frac{g_i^2}{M_i\omega_i^2}}{b} \Bigg)^2+\\
+\sum_i \Bigg[\frac{1}{2} \Bigg(\frac{a+\sum_i \frac{g_i^2}{M_i\omega_i^2}}{b} \Bigg)\frac{g_i^2}{M_i\omega_i^2}- \Bigg(\frac{a+\sum_i \frac{g_i^2}{M_i\omega_i^2}}{b} \Bigg)\frac{g_i^2}{M_i\omega_i^2} \Bigg]
+\end{eqnarray}
+
+This equation shows that the height of the barrier lets call it $\Delta$ will change according to $\Delta=-H_{min}$ and is also subjecto to changes of the coupling, frequency and mass of the oscillators.
+
+\experiment{Experiment of different oscillators with different frequencies but same energy and the initial conditions on the buridans ass}
+In this little test, I located all the $5$ different initial conditions of the oscillators on the buridans ass line located on the top left of the phase space of the oscillator, the initial conditions for the positions where: $pruebasx=[-5.,-4.,-3.,-6.,-7.]$ and for the momentums: $pruebasp=[0.25,0.2,0.15,0.3,0.35]$, and on the unstable equilibrium for the particle. I used the hamiltonian of the harmonic oscillator to find the frequency needed so that the Energy of the system was the same for each case, the result is shown below:
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{different_freqs_200dt.png}
+\end{center}
+\caption{Different frequencies but same energy with initial conditions on the buridans ass}
+\label{fig:diff_freq_same_energy}
+\end{figure}
+
+\experiment{Experiment with three oscillators}
+In this test I used the same idea of the last experiment, where the oscillators where located on the buridans ass line and given the same energy by the frequency. All of the coupling parameter where $g=0.07$, the frequencies where: $[0.6324555320336759,0.6324555320336759*1.2639842760097928,0.6324555320336759*0.6925256939166184]$, the initial conditions for position: $[-5.,-4.,-7.]$ and for momentum: $[0.25,0.2,0.35]$ with $dts=0.001*2. *pi/W$ where $W=\omega_{resonance}$
+The results are shown below:
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{tres_osci_otro_intento.png}
+\end{center}
+\caption{Three oscillators coupled with different frequencies but same energy with initial conditions on the buridans ass}
+\label{fig:three_osci_diff_freq_same_energy_pos}
+\end{figure}
+
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{tres_osci_otro_intento_neg.png}
+\end{center}
+\caption{Three oscillators coupled with different frequencies but same energy with initial conditions on the buridans ass, con condiciones iniciales -1 del caso anterior}
+\label{fig:three_osci_diff_freq_same_energy_neg}
+\end{figure}
+
+\begin{figure}[H] % Example of including images
+\begin{center}
+\includegraphics[width=1\linewidth]{tres_osci_otro_intento_con_neg.png}
+\end{center}
+\caption{Three oscillators coupled with different frequencies but same energy with initial conditions on the buridans ass combined}
+\label{fig:three_osci_diff_freq_same_energy_neg_pos}
+\end{figure}
 
 
 %----------------------------------------
